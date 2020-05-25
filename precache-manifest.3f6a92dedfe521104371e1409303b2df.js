@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3af312471bdb8c79fae92c4f0b3e79ce",
+    "revision": "e4f46ba988108eb2de9f4e908a1f6523",
     "url": "/it-kamasutra-95/index.html"
   },
   {
@@ -16,11 +16,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/it-kamasutra-95/static/css/6.1513ee9f.chunk.css"
   },
   {
-    "revision": "708eef8dba496b97e9ca",
+    "revision": "8c72f64ede99941d5307",
     "url": "/it-kamasutra-95/static/css/7.25d7f137.chunk.css"
   },
   {
-    "revision": "6a56c1aa33ab6cb39fbb",
+    "revision": "343066d8bd224960f814",
     "url": "/it-kamasutra-95/static/css/main.4c4c3ae5.chunk.css"
   },
   {
@@ -28,12 +28,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/it-kamasutra-95/static/js/0.a1c4313f.chunk.js"
   },
   {
-    "revision": "946e861d3674b8b1c10e",
-    "url": "/it-kamasutra-95/static/js/3.5dbb0a00.chunk.js"
+    "revision": "9dec0a72db73d9dc58a7",
+    "url": "/it-kamasutra-95/static/js/3.18ab1b6b.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/it-kamasutra-95/static/js/3.5dbb0a00.chunk.js.LICENSE.txt"
+    "url": "/it-kamasutra-95/static/js/3.18ab1b6b.chunk.js.LICENSE.txt"
   },
   {
     "revision": "3ca430fc6bf34597ff19",
@@ -48,16 +48,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/it-kamasutra-95/static/js/6.ffda5e99.chunk.js"
   },
   {
-    "revision": "708eef8dba496b97e9ca",
-    "url": "/it-kamasutra-95/static/js/7.9842980a.chunk.js"
+    "revision": "8c72f64ede99941d5307",
+    "url": "/it-kamasutra-95/static/js/7.2cdae92a.chunk.js"
   },
   {
-    "revision": "6a56c1aa33ab6cb39fbb",
-    "url": "/it-kamasutra-95/static/js/main.40aa814a.chunk.js"
+    "revision": "343066d8bd224960f814",
+    "url": "/it-kamasutra-95/static/js/main.76f3ffaf.chunk.js"
   },
   {
-    "revision": "0f421d9a2911624b5607",
-    "url": "/it-kamasutra-95/static/js/runtime-main.89658b32.js"
+    "revision": "8fe046065fa86cf08e73",
+    "url": "/it-kamasutra-95/static/js/runtime-main.7b17560e.js"
   },
   {
     "revision": "c9041f3f144a80786ab805a59db61c89",
