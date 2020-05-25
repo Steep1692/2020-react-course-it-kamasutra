@@ -1,0 +1,15 @@
+.wallpaper {
+    --height: 256px;
+    --offset-inner: -128px;
+
+    width: 100%;
+    height: var(--height);
+    margin-bottom: var(--offset-inner);
+
+    overflow: hidden;
+}
+
+.wallpaper img {
+    width: 100%;
+    min-height: 100%;
+}

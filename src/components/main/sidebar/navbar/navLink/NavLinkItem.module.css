@@ -1,0 +1,13 @@
+.navLinkItem {
+    --color: #3e6f20;
+
+    text-decoration: none;
+    font-weight: 500;
+
+    color: var(--color);
+}
+
+.navLinkItem.active {
+    background-color: var(--color);
+    color: #fff;
+}

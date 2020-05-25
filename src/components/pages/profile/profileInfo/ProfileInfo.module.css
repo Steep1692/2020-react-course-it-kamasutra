@@ -1,0 +1,14 @@
+.profileInfo {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+
+}
+
+.profileInfo .wrapAvatar,
+.profileInfo .wrapInfo {
+    padding: 16px;
+}
+
+.profileInfo img {
+    max-width: 100%;
+}

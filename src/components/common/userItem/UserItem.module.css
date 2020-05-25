@@ -1,0 +1,32 @@
+.userItem {
+    display: grid;
+    grid-template-columns: 128px 1fr;
+    padding: 16px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.userItem:first-of-type {
+    margin-top: 0;
+}
+
+.userItem .left,
+.userItem .right {
+    display: grid;
+}
+
+.userItem .left {
+    justify-items: center;
+}
+
+.userItem .right {
+    display: grid;
+    justify-items: left;
+}
+
+.userItem .wrapAvatar {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 10px;
+}

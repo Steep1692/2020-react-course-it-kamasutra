@@ -1,0 +1,9 @@
+.aside {
+    padding: 16px;
+    border-radius: 8px;
+
+    grid-area: aside;
+
+    background-color: #fff;
+    box-shadow: 0px 0px 2px 0px #000;
+}

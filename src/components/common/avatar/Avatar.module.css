@@ -1,0 +1,10 @@
+.wrapAvatar {
+    overflow: hidden;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.wrapAvatar img {
+    max-width: 100%;
+    height: 100%;
+}

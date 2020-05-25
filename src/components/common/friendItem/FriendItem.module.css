@@ -1,0 +1,16 @@
+.friendItem a {
+    display: grid;
+    justify-items: center;
+
+    font-weight: 500;
+    text-decoration: none;
+
+    color: #3e6f20;
+}
+
+.friendItem .wrapAvatar {
+    --size: 64px;
+
+    width: var(--size);
+    height: var(--size);
+}

@@ -1,0 +1,43 @@
+.messageItem {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    grid-gap: 16px;
+
+
+    color: #fff;
+}
+
+.messageItem a {
+    text-decoration: none;
+}
+
+.messageItem .text .name {
+    font-weight: 500;
+
+    color: #3e6f20;
+}
+
+.messageItem .text .text {
+    color: #000;
+}
+
+.messageItem.author {
+    grid-template-columns: 1fr 60px;
+
+    text-align: right;
+}
+
+.messageItem.author .wrapAvatar {
+    grid-column: 2;
+}
+
+.messageItem.author .content {
+    grid-row: 1;
+}
+
+.messageItem .wrapAvatar {
+    --size: 64px;
+
+    width: var(--size);
+    height: var(--size);
+}

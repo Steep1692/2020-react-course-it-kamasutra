@@ -1,0 +1,20 @@
+.post {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    grid-gap: 16px;
+}
+
+.post .text .name {
+    font-weight: 500;
+
+    color: #3e6f20;
+}
+
+.post .wrapAvatar img {
+    --size: 64px;
+
+    width: var(--size);
+    height: var(--size);
+
+    border-radius: 50%;
+}
