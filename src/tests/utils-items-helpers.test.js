@@ -1,4 +1,4 @@
-import {changeItemByPropName} from "../utils/items-helpers";
+import {changeItemByPropName} from "../utils/helpers";
 
 test('Should change item by prop name', () => {
    const obj = [

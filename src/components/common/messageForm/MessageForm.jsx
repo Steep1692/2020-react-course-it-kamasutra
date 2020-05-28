@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './MessageForm.module.css';
 import {Field, reduxForm} from "redux-form";
-import {Textarea} from "../formControl";
+import {Textarea} from "../formControl/FormControl";
 import {required} from "../../../utils/validations";
 
 const MessageForm = ({handleSubmit, onSubmit}) => {

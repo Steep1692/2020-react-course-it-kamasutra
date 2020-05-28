@@ -4,11 +4,11 @@
 
 }
 
-.profileInfo .wrapAvatar,
 .profileInfo .wrapInfo {
     padding: 16px;
 }
 
-.profileInfo img {
-    max-width: 100%;
+.profileInfo .wrapAvatar {
+    height: 256px;
+    justify-self: center;
 }

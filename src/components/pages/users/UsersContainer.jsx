@@ -14,7 +14,7 @@ import {
     getTotalItemsCount,
     getIsDataFetching,
     getFollowingFetchingList,
-} from './../../../redux/selectors/users';
+} from '../../../redux/selectors/users';
 
 import UsersRow from './usersRow/UsersRow';
 
