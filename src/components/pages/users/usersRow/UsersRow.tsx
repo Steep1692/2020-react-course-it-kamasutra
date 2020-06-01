@@ -1,11 +1,25 @@
-import React from "react";
+import React, {FC} from "react";
 
-import s from './UsersRow.module.css';
 import UserItem from "../../../common/userItem/UserItem";
 import PreLoader from "../../../common/preLoader/PreLoader";
 import Paginator from "../../../common/paginator/Paginator";
+import {UsersRowType, UserType} from "../../../../models/users";
 
-const UsersRow = ({
+// Used required to not to create declaration file for css module
+let s = require('./UsersRow.module.css');
+
+type Props = {
+    users: UsersRowType,
+    totalItemsCount: number,
+    itemsPerPage: number,
+    currentPage: number,
+    onPageClick: (page: number) => void,
+    onFollowBtnClick: (user: UserType) => void,
+    isDataFetching: boolean,
+    followingFetchingList: number[],
+}
+
+const UsersRow: FC<Props> = ({
                       users,
                       totalItemsCount,
                       itemsPerPage,

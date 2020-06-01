@@ -1,7 +1,12 @@
 import profileAPI from "../../api/profile";
 import {ResponseCodes} from "../../utils/enums";
 import {ActionCreatorType, ActionType, ThunkType} from "../../models/redux";
-import {ProfileType, PostType, ProfilePhotosType, ProfileInfoType} from "../../models/profile";
+import {
+    ProfileType,
+    ProfilePhotosType,
+    ProfileInfoType,
+    ProfileStatusResponseType, PostsRowType
+} from "../../models/profile";
 
 const ADD_POST = 'profile/ADD-POST';
 const SET_USER_PROFILE = 'profile/SET-USER-PROFILE';
@@ -30,7 +35,7 @@ let initialState = {
             large: null,
         },
     } as ProfileType,
-    status: '' as string,
+    status: '' as ProfileStatusResponseType,
     posts: [
         {
             message: 'I don\'t take this too seriously!',
@@ -42,7 +47,7 @@ let initialState = {
             author: 'Dmitry',
             likesCount: 55,
         },
-    ] as Array<PostType>,
+    ] as PostsRowType
 };
 
 type InitialStateType = typeof initialState;
@@ -142,6 +147,7 @@ export const updateStatus: ThunkType = (status: string) => async (dispatch) => {
 };
 export const updateAvatar: ThunkType = (file) => async (dispatch) => {
     const { data } = await profileAPI.updateAvatar(file);
+
     dispatch( updateAvatarSuccess(data) );
 };
 export const updateProfile: ThunkType = (newProfile: ProfileInfoType) => async (dispatch) => {

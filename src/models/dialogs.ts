@@ -14,3 +14,5 @@ export type DialogType = {
     interlocutor: string
     messages: Array<MessageType>
 }
+
+export type DialogRowType = Array<DialogItemType>

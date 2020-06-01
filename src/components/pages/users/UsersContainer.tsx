@@ -1,12 +1,12 @@
-import React from "react";
-import {connect} from 'react-redux';
+import React from "react"
+import {connect, ConnectedProps} from 'react-redux'
 
 import {
     follow,
     unfollow,
     setCurrentPage,
     fetchUsers,
-} from '../../../redux/reducers/usersReducer';
+} from '../../../redux/reducers/usersReducer'
 import {
     getUsers,
     getCurrentPage,
@@ -14,19 +14,41 @@ import {
     getTotalItemsCount,
     getIsDataFetching,
     getFollowingFetchingList,
-} from '../../../redux/selectors/users';
+} from '../../../redux/selectors/users'
 
-import UsersRow from './usersRow/UsersRow';
+import UsersRow from './usersRow/UsersRow'
+import {AppStateType} from "../../../redux/store";
+import {UserType} from "../../../models/users";
 
-class UsersContainer extends React.Component {
+const mapState = (state: AppStateType) => ({
+    users: getUsers(state),
+    currentPage: getCurrentPage(state),
+    itemsPerPage: getItemsPerPage(state),
+    totalItemsCount: getTotalItemsCount(state),
+    isDataFetching: getIsDataFetching(state),
+    followingFetchingList: getFollowingFetchingList(state),
+})
+
+const mapDispatch = {
+    follow,
+    unfollow,
+    setCurrentPage,
+    fetchUsers,
+}
+
+const connector = connect(mapState, mapDispatch)
+type ReduxType = ConnectedProps<typeof connector>
+type Props = ReduxType & {}
+
+class UsersContainer extends React.Component<Props> {
     componentDidMount() {
         this.props.fetchUsers(this.props.itemsPerPage, this.props.currentPage);
     }
 
-    onPageClick = (page) => {
+    onPageClick = (page: number) => {
         this.props.fetchUsers(this.props.itemsPerPage, page);
     }
-    onFollowBtnClick = (user) => {
+    onFollowBtnClick = (user: UserType) => {
         const {id, followed} = user;
 
         if(followed) {
@@ -42,9 +64,7 @@ class UsersContainer extends React.Component {
             totalItemsCount,
             itemsPerPage,
             currentPage,
-            setUsers,
             isDataFetching,
-            isFollowingFetching,
             followingFetchingList,
         } = this.props;
 
@@ -55,28 +75,14 @@ class UsersContainer extends React.Component {
                 itemsPerPage={itemsPerPage}
                 currentPage={currentPage}
                 onPageClick={this.onPageClick}
-                setUsers={setUsers}
                 onFollowBtnClick={this.onFollowBtnClick}
                 isDataFetching={isDataFetching}
-                isFollowingFetching={isFollowingFetching}
                 followingFetchingList={followingFetchingList}
             />
         );
     }
 }
 
-const mapStateToProps = (state) => ({
-    users: getUsers(state),
-    currentPage: getCurrentPage(state),
-    itemsPerPage: getItemsPerPage(state),
-    totalItemsCount: getTotalItemsCount(state),
-    isDataFetching: getIsDataFetching(state),
-    followingFetchingList: getFollowingFetchingList(state),
-});
 
-export default connect(mapStateToProps, {
-    follow,
-    unfollow,
-    setCurrentPage,
-    fetchUsers,
-})(UsersContainer);
+
+export default connector(UsersContainer);

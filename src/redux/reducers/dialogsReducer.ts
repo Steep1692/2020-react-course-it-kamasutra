@@ -1,5 +1,5 @@
-import {ActionCreatorType, ActionType} from "../../models/redux";
-import {DialogItemType, DialogType} from "../../models/dialogs";
+import {ActionCreatorType} from "../../models/redux";
+import {DialogRowType, DialogType} from "../../models/dialogs";
 
 const SEND_MESSAGE = 'dialog/SEND-MESSAGE';
 
@@ -15,7 +15,7 @@ const initialState = {
             id: 2,
             message: 'Need this asap.',
         }
-    ] as Array<DialogItemType>,
+    ] as DialogRowType,
     dialog: {
         id: 1,
         interlocutor: 'Ti',
@@ -37,10 +37,10 @@ const initialState = {
 };
 type InitialStateType = typeof initialState;
 
-const dialogsReducer = (state = initialState, {type, data}: ActionType): InitialStateType => {
-    switch (type) {
+const dialogsReducer = (state = initialState, action: DialogsReducerTypes): InitialStateType => {
+    switch (action.type) {
         case SEND_MESSAGE: {
-            const message = data.messageText;
+            const message = action.data.messageText;
 
             return {
                 ...state,
@@ -61,10 +61,20 @@ const dialogsReducer = (state = initialState, {type, data}: ActionType): Initial
     }
 };
 
-export const sendMessage: ActionCreatorType = (messageText: string) => ({
+type SendMessageType = {
+    type: typeof SEND_MESSAGE
+    data: {
+        messageText: string
+    }
+}
+
+type DialogsReducerTypes = SendMessageType
+
+export const sendMessage: ActionCreatorType<SendMessageType> = (messageText: string) => ({
     type: SEND_MESSAGE,
     data: {
         messageText,
     },
 });
+
 export default dialogsReducer;

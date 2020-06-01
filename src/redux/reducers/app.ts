@@ -1,40 +1,33 @@
-import {ActionCreatorType, ActionType} from "../../models/redux";
-
-const SET_IS_APP_INITIALIZED = 'app/SET-IS-APP-INITIALIZED';
+import {InferActionsTypes} from "../store"
 
 const initialState = {
     isAppInitialized: false as boolean,
     errors: [] as Array<string>,
-};
+}
 
-export type InitialStateType = typeof initialState;
 
-const app = (state = initialState, {type, data}: SetAppInitAction): InitialStateType => {
-    switch (type) {
-        case SET_IS_APP_INITIALIZED:
+const app = (state = initialState, action: ActionTypes): InitialStateType => {
+    switch (action.type) {
+        case 'APP/SET-IS-APP-INITIALIZED':
             return {
                 ...state,
-                isAppInitialized: data.flag,
-            };
+                isAppInitialized: action.data.flag,
+            }
         default:
-            return state;
-    }
-};
-
-type SetAppInitAction = {
-    type: typeof SET_IS_APP_INITIALIZED
-    data: {
-        flag: boolean
+            return state
     }
 }
 
-type AppActionTypes = SetAppInitAction
+export const actions = {
+    setIsAppInitialized: (flag: boolean) => ({
+        type: 'APP/SET-IS-APP-INITIALIZED',
+        data: {
+            flag,
+        },
+    }) as const
+}
 
-export const setIsAppInitialized: ActionCreatorType = (flag: boolean): AppActionTypes => ({
-      type: SET_IS_APP_INITIALIZED,
-      data: {
-          flag,
-      },
-});
+export default app
 
-export default app;
+export type InitialStateType = typeof initialState
+type ActionTypes = InferActionsTypes<typeof actions>

@@ -1,13 +1,11 @@
-import authAPI from "../../api/auth";
-import {stopSubmit} from "redux-form";
-import errors from '../../assets/dictonary/errors.json';
-import {ActionCreatorType, ThunkType} from "../../models/redux";
-import {ResponseCodes} from "../../utils/enums";
-import {fetchCaptcha} from "./security";
-import {AuthResponse} from "../../models/auth";
-
-const SET_AUTH_DATA = 'auth/SET_AUTH_DATA';
-const SET_IS_AUTH = 'auth/SET_IS_AUTH';
+import authAPI from "../../api/auth"
+import {stopSubmit} from "redux-form"
+import errors from '../../assets/dictonary/errors.json'
+import {ThunkType} from "../../models/redux"
+import {ResponseCodes} from "../../utils/enums"
+import {fetchCaptcha} from "./security"
+import {AuthResponse} from "../../models/auth"
+import {InferActionsTypes} from "../store";
 
 type InitialStateType = AuthResponse & {
     isAuth: boolean,
@@ -18,125 +16,116 @@ const initialState: InitialStateType = {
     login: null as string | null,
     id: null as number | null,
     isAuth: false as boolean,
-};
+}
 
-const auth = (state = initialState, action: AuthActions): InitialStateType => {
+const auth = (state = initialState, action: ActionTypes): InitialStateType => {
     switch (action.type) {
-        case SET_AUTH_DATA:
+        case 'auth/SET_AUTH_DATA':
             return {
                 ...state,
-                ...action.authData,
-            };
-        case SET_IS_AUTH:
+                ...action.data.authData,
+            }
+        case 'auth/SET_IS_AUTH':
             return {
                 ...state,
-                isAuth: action.flag,
-            };
+                isAuth: action.data.flag,
+            }
 
         default:
-            return state;
+            return state
     }
-};
-
-interface SetAuthDataAction {
-    type: typeof SET_AUTH_DATA
-    authData: AuthResponse
 }
 
-interface SetAuthStatusAction {
-    type: typeof SET_IS_AUTH
-    flag: boolean
+const actions = {
+    setAuthData: (authData: AuthResponse) => ({
+        type: 'auth/SET_AUTH_DATA',
+        data: {
+            authData,
+        },
+    }) as const,
+    setIsAuth: (flag: boolean) => ({
+        type: 'auth/SET_IS_AUTH',
+        data: {
+            flag,
+        },
+    }) as const,
 }
-
-type AuthActions = SetAuthDataAction | SetAuthStatusAction
-
-export const setAuthData = (authData: AuthResponse): AuthActions => {
-  return {
-      type: SET_AUTH_DATA,
-      authData,
-  };
-};
-export const setIsAuth = (flag: boolean): AuthActions => {
-  return {
-      type: SET_IS_AUTH,
-      flag,
-  };
-};
 
 export const authMe: ThunkType = () => async (dispatch: Function) => {
-    const {data, resultCode} = await authAPI.me();
+    const { data, resultCode } = await authAPI.me()
 
     if(resultCode === ResponseCodes.SUCCESS) {
         const {
             id,
             login,
             email,
-        } = data;
+        } = data
 
         dispatch(
-            setAuthData({
+            actions.setAuthData({
                 id,
                 login,
                 email,
             })
-        );
-        dispatch( setIsAuth(true) );
+        )
+        dispatch( actions.setIsAuth(true) )
     }
-};
+}
 export const login: ThunkType = (formData) => async (dispatch: Function) => {
     try {
 
-        const { data: { resultCode, messages, data } } = await authAPI.login(formData);
+        const { resultCode, messages, data } = await authAPI.login(formData)
+
 
         if (resultCode === ResponseCodes.SUCCESS) {
             const {
-                id,
-                login,
-                email,
-            } = data;
+                userId,
+            } = data
 
             dispatch(
-                setAuthData({
-                    id,
-                    login,
-                    email,
+                actions.setAuthData({
+                    id: userId,
+                    email: null,
+                    login: null,
                 })
-            );
-            dispatch( setIsAuth(true) );
+            )
+            dispatch( actions.setIsAuth(true) )
         } else if (resultCode === ResponseCodes.ANTI_BOT) {
-            dispatch( fetchCaptcha() );
+            dispatch( fetchCaptcha() )
         }
 
         dispatch(stopSubmit('login', {
             _error:  messages.join('\n'),
-        }));
+        }))
 
     } catch(error) {
 
         dispatch(stopSubmit('login', {
             _error: errors.nointernet,
-        }));
+        }))
 
     }
-};
+}
 export const logout: ThunkType = () => async (dispatch: Function) => {
-    await authAPI.logout();
+    await authAPI.logout()
 
     const {
         id,
         login,
         email,
         isAuth,
-    } = initialState;
+    } = initialState
 
     dispatch(
-        setAuthData({
+        actions.setAuthData({
             id,
             login,
             email,
         })
-    );
-    dispatch( setIsAuth(isAuth) );
-};
+    )
+    dispatch( actions.setIsAuth(isAuth) )
+}
 
-export default auth;
+export default auth
+
+type ActionTypes = InferActionsTypes<typeof actions>

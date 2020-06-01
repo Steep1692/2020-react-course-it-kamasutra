@@ -3,6 +3,8 @@ import userAPI from "../../api/users";
 import {changeItemByPropName} from "../../utils/helpers";
 import {ActionCreatorType, ActionType, ThunkType} from "../../models/redux";
 import {ProfileInfoType} from "../../models/profile";
+import {Dispatch} from "redux";
+import {UsersRowType} from "../../models/users";
 
 const FOLLOW = 'users/FOLLOW';
 const UNFOLLOW = 'users/UNFOLLOW';
@@ -14,7 +16,7 @@ const SET_DATA_FETCHING= 'users/SET-DATA-FETCHING';
 const SET_IS_FOLLOWING_FETCHING= 'users/SET-IS-FOLLOWING-FETCHING';
 
 const initialState = {
-    users: [] as Array<ProfileInfoType> | null,
+    users: [] as UsersRowType,
     currentPage: 1 as number,
     itemsPerPage: 5 as number,
     totalItemsCount: 0 as number,
@@ -147,7 +149,7 @@ export const setIsFollowingFetching: ActionCreatorType = (flag: boolean, id: num
     };
 };
 
-const followUnfollowFlow = async (dispatch: Function, apiMethod: Function, actionCreator: ActionCreatorType, id: number) => {
+const followUnfollowFlow = async (dispatch: Dispatch, apiMethod: Function, actionCreator: ActionCreatorType, id: number) => {
     dispatch( setIsFollowingFetching(true, id) );
 
     try {

@@ -1,14 +1,14 @@
 import securityApi from "../../api/security";
-import {ActionCreatorType, ActionType, ThunkType} from "../../models/redux";
+import {ActionCreatorType, ThunkType} from "../../models/redux";
 const SET_CAPTCHA_URL = 'security/SET-CAPTCHA-URL';
 
 const initialState = {
     captchaUrl: null as string | null,
 };
 
-type initialStateType = typeof initialState;
+type initialStateType = typeof initialState
 
-const security = (state = initialState, {type, data}: ActionType): initialStateType => {
+const security = (state = initialState, {type, data}: SecurityTypes): initialStateType => {
     switch (type) {
         case SET_CAPTCHA_URL:
             return {
@@ -19,6 +19,15 @@ const security = (state = initialState, {type, data}: ActionType): initialStateT
             return state;
     }
 };
+
+type SetCaptchaUrlType = {
+    type: typeof SET_CAPTCHA_URL
+    data: {
+        url: typeof initialState.captchaUrl
+    }
+}
+
+type SecurityTypes = SetCaptchaUrlType
 
 export const setCaptchaUrl: ActionCreatorType = (url: string) => {
   return {

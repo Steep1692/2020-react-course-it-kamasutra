@@ -5,6 +5,8 @@ export type PostType = {
     likesCount: number
 }
 
+export type PostsRowType = Array<PostType>
+
 export type ProfilePhotosType = {
     small: string | null
     large: string | null
@@ -33,3 +35,5 @@ export type ProfileInfoType = {
 export type ProfileType = ProfileInfoType & {
     photos: ProfilePhotosType
 }
+
+export type ProfileStatusResponseType = string | null
