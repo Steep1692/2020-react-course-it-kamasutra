@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
-import Navbar from "./navbar/Navbar";
-import FriendsBlock from "./friendsBlock/FriendsBlock";
-import {connect} from "react-redux";
-import {getFriendBlock, getNavBar} from "../../../redux/selectors/sidebar";
-import {AppStateType} from "../../../redux/store";
+import Navbar from './navbar/Navbar';
+import FriendsBlock from './friendsBlock/FriendsBlock';
+import {connect} from 'react-redux';
+import {getFriendBlock, getNavBar} from '../../../redux/selectors/sidebar';
+import {AppStateType} from '../../../redux/store';
 
 // Is require because of ts needs css modules to declare itself
 const s = require('./SidebarContainer.module.css');
@@ -15,8 +15,8 @@ type Props = {
 const SidebarContainer: FC<Props> = ({navBar, friendsBlock}) => {
     return (
         <aside className={s.aside}>
-            <Navbar state={navBar}/>
-            <FriendsBlock state={friendsBlock}/>
+            <Navbar navBar={navBar}/>
+            <FriendsBlock friendsBlock={friendsBlock}/>
         </aside>
     );
 };

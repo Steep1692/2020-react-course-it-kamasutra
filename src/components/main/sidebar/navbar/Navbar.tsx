@@ -1,11 +1,16 @@
-import React from 'react';
-import s from './Navbar.module.css';
-import NavLinkItem from "./navLink/NavLinkItem";
+import React, {FC} from 'react'
+import s from './Navbar.module.css'
+import NavLinkItem from './navLink/NavLinkItem'
+import {NavBarType} from "../../../../models/navbar";
 
-const Navbar = ({state}) => {
+type Props = {
+    navBar: NavBarType
+}
+
+const Navbar: FC<Props> = ({navBar}) => {
     const {
         links,
-    } = state;
+    } = navBar
 
     const navElements =links.map((linkItem, key) => (
         <li
@@ -16,7 +21,7 @@ const Navbar = ({state}) => {
                 linkItem={linkItem}
             />
         </li>
-    ));
+    ))
 
     return (
         <nav className={s.nav}>
@@ -25,7 +30,7 @@ const Navbar = ({state}) => {
                 { navElements }
             </ul>
         </nav>
-    );
-};
+    )
+}
 
-export default Navbar;
+export default Navbar

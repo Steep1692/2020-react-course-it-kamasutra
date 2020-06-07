@@ -1,19 +1,20 @@
-import React from 'react';
-import s from './PostItem.module.css';
-import defaultAvatar from '../../../assets/images/profileAvatar.png';
-import Avatar from "../avatar/Avatar";
+import React, {FC} from 'react'
+import s from './PostItem.module.css'
+import Avatar from '../avatar/Avatar'
+import {PostType} from '../../../models/profile'
 
-const PostItem = ({name, message, likesCount}) => {
+type Props = PostType & {}
 
+const PostItem: FC<Props> = ({author, message, likesCount}) => {
     return (
         <div className={s.post}>
             <div className={s.wrapAvatar}>
-                <Avatar/>
+                <Avatar image={null}/>
             </div>
             <div className={s.content}>
                 <div className={s.text}>
                     <div className={s.name}>
-                        {name}
+                        {author}
                     </div>
                     <div className={s.text}>
                         {message}
@@ -25,7 +26,7 @@ const PostItem = ({name, message, likesCount}) => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default PostItem;
+export default PostItem

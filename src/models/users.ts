@@ -1,4 +1,4 @@
-import {ProfileInfoType, ProfilePhotosType, ProfileStatusResponseType} from "./profile";
+import {ProfilePhotosType, ProfileStatusResponseType} from "./profile";
 
 export type UserType = {
     name: string

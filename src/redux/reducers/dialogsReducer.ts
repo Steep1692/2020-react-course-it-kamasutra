@@ -1,5 +1,5 @@
 import {ActionCreatorType} from "../../models/redux";
-import {DialogRowType, DialogType} from "../../models/dialogs";
+import {DialogsRowType, DialogType} from "../../models/dialogs";
 
 const SEND_MESSAGE = 'dialog/SEND-MESSAGE';
 
@@ -15,7 +15,7 @@ const initialState = {
             id: 2,
             message: 'Need this asap.',
         }
-    ] as DialogRowType,
+    ] as DialogsRowType,
     dialog: {
         id: 1,
         interlocutor: 'Ti',

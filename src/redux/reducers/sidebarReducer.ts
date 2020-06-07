@@ -1,4 +1,5 @@
-import {ActionType} from "../../models/redux";
+import {ActionType} from '../../models/redux'
+import {FriendsBlockType, NavBarType} from "../../models/navbar";
 
 const initialState = {
     navBar: {
@@ -16,25 +17,28 @@ const initialState = {
                 name: 'Users',
             },
         ],
-    },
+    } as NavBarType,
     friendsBlock: {
         friends: [
             {
+                name: 'Mock name',
                 id: 1,
-                name: 'Dmitry',
-            },
-            {
-                id: 2,
-                name: 'Ti',
-            },
+                uniqueUrlName: null,
+                photos: {
+                    small: null,
+                    large: null,
+                },
+                status: 'mock status',
+                followed: false,
+            }
         ]
-    },
-};
+    } as FriendsBlockType,
+}
 
-type InitialStateType = typeof initialState;
+type InitialStateType = typeof initialState
 
 const sidebarReducer = (state = initialState, {type, data}: ActionType): InitialStateType => {
-    return state;
-};
+    return state
+}
 
-export default sidebarReducer;
+export default sidebarReducer

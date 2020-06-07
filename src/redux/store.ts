@@ -1,14 +1,13 @@
-import {applyMiddleware, combineReducers, compose, createStore} from "redux"
-
-import profileReducer from "./reducers/profileReducer"
-import dialogsReducer from "./reducers/dialogsReducer"
-import sidebarReducer from "./reducers/sidebarReducer"
-import usersReducer from "./reducers/usersReducer"
-import auth from "./reducers/auth"
-import app from "./reducers/app"
-import security from "./reducers/security"
+import {applyMiddleware, combineReducers, compose, createStore} from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { reducer as formReducer } from 'redux-form'
+import profileReducer from './reducers/profileReducer'
+import dialogsReducer from './reducers/dialogsReducer'
+import sidebarReducer from './reducers/sidebarReducer'
+import usersReducer from './reducers/usersReducer'
+import auth from './reducers/auth'
+import app from './reducers/app'
+import security from './reducers/security'
 
 let rootReducer = combineReducers({
     profileReducer,
@@ -34,6 +33,9 @@ export default store
 type PropertiesTypes<T> = T extends {[key: string]: infer U} ? U : never
 export type InferActionsTypes<T extends {[key: string]: (...args: any[]) => any}> = ReturnType<PropertiesTypes<T>>
 
-// export type InferActionsType<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never
+/**
+ * That is shorter implementation of InferActionsType type
+ * export type InferActionsType<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never
+ */
 
 export type AppStateType = ReturnType<typeof rootReducer>

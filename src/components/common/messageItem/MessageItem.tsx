@@ -1,8 +1,13 @@
-import React from 'react';
-import s from './MessageItem.module.css';
-import Avatar from "../avatar/Avatar";
+import React, {FC} from 'react'
+import s from './MessageItem.module.css'
+import Avatar from "../avatar/Avatar"
+import {MessageType} from "../../../models/dialogs"
 
-const MessageItem = ({author, message, onClick}) => {
+type Props = MessageType & {
+    onClick: (...args: any) => void
+}
+
+const MessageItem: FC<Props> = ({author, message, onClick}) => {
     return (
         <div
             className={s.messageItem}
@@ -10,7 +15,7 @@ const MessageItem = ({author, message, onClick}) => {
         >
             <div className={s.wrapAvatar}>
                 <a href="#!">
-                    <Avatar/>
+                    <Avatar image={null}/>
                 </a>
             </div>
             <div className={s.content}>
@@ -26,7 +31,7 @@ const MessageItem = ({author, message, onClick}) => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default MessageItem;
+export default MessageItem

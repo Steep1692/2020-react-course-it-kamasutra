@@ -1,31 +1,35 @@
-import React from "react";
+import React, {FC} from "react"
+import s from './UserItem.module.css'
+import {NavLink} from "react-router-dom"
+import Avatar from "../avatar/Avatar"
+import {UserType} from "../../../models/users";
 
-import s from './UserItem.module.css';
+type Props = {
+    user: UserType
+    onFollowBtnClick: (...args: any) => void
+    followBtnDisabled: boolean
+}
 
-import defaultAvatar from '../../../assets/images/profileAvatar.png';
-import {NavLink} from "react-router-dom";
-import Avatar from "../avatar/Avatar";
-
-const UserItem = ({user, onFollowBtnClick, followBtnDisabled}) => {
+const UserItem: FC<Props> = ({user, onFollowBtnClick, followBtnDisabled}) => {
     const {
         id,
         name,
         status,
         followed,
         photos,
-    } = user;
+    } = user
 
-    const userLink =`/profile/${id}`;
-    const photoSmall = photos.small;
-    const photoLarge = photos.large;
-    const avatar = photoSmall || photoLarge;
+    const userLink =`/profile/${id}`
+    const photoSmall = photos.small
+    const photoLarge = photos.large
+    const avatar = photoSmall || photoLarge
 
     const followBtnText = (followed)
         ? 'Unfollow'
-        : 'Follow';
+        : 'Follow'
     const _onFollowBtnClick = () => {
-        onFollowBtnClick(user);
-    };
+        onFollowBtnClick(user)
+    }
 
     return (
         <div className={s.userItem}>
@@ -50,7 +54,7 @@ const UserItem = ({user, onFollowBtnClick, followBtnDisabled}) => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default UserItem;
+export default UserItem

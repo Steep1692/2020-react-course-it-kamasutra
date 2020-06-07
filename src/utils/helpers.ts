@@ -1,18 +1,14 @@
-export const changeItemByPropName = (arr: any[] | null, propName: string, id: number, obj: {}): any[] | null => {
-    if ( !arr ) {
-        return null;
-    }
-
+export const changeItemByPropName = (arr: any[], propName: string, id: number, obj: {}): any[] => {
     return arr.map((item: any) => {
         if (item[propName] === id) {
             return {
                 ...item,
                 ...obj,
-            };
+            }
         }
 
-        return item;
+        return item
     })
-};
+}
 
-export const isTheSameAsStrings = (a: any, b: any): boolean => (a === b) || ( !a && !b );
+export const isTheSameAsStrings = (a: any, b: any): boolean => (a === b) || ( !a && !b )

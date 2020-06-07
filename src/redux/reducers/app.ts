@@ -1,7 +1,8 @@
 import {InferActionsTypes} from "../store"
 
 const initialState = {
-    isAppInitialized: false as boolean,
+    // Needs to be false, true is a debug statement of this variable
+    isAppInitialized: true as boolean,
     errors: [] as Array<string>,
 }
 

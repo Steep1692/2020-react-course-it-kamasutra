@@ -11,11 +11,11 @@ let s = require('./LoginContainer.module.css');
 
 const mapState = ({security}: AppStateType) => ({
     captchaUrl: security.captchaUrl,
-});
+})
 const mapDispatch = {
     login,
-};
-const connector = connect(mapState, mapDispatch);
+}
+const connector = connect(mapState, mapDispatch)
 type PropsFromRedux = ConnectedProps<typeof connector>
 type Props = PropsFromRedux & {}
 

@@ -1,8 +1,13 @@
-import React from 'react';
-import s from './DialogsRow.module.css';
-import MessageItem from "../../../common/messageItem/MessageItem";
+import React, {FC} from 'react'
+import s from './DialogsRow.module.css'
+import MessageItem from '../../../common/messageItem/MessageItem'
+import {DialogsRowType} from "../../../../models/dialogs";
 
-const DialogsRow = ({dialogs}) => {
+type Props = {
+    dialogs: DialogsRowType
+}
+
+const DialogsRow: FC<Props> = ({dialogs}) => {
     const dialogsElements = dialogs.map(({name, message, id}) => (
         <li key={id}>
             <MessageItem
@@ -13,7 +18,7 @@ const DialogsRow = ({dialogs}) => {
                 }}
             />
         </li>
-    ));
+    ))
 
     return (
         <div className={s.wrapDialogsRow}>
@@ -22,7 +27,7 @@ const DialogsRow = ({dialogs}) => {
                 { dialogsElements }
             </ul>
         </div>
-    );
-};
+    )
+}
 
-export default DialogsRow;
+export default DialogsRow

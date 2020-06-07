@@ -15,4 +15,4 @@ export type DialogType = {
     messages: Array<MessageType>
 }
 
-export type DialogRowType = Array<DialogItemType>
+export type DialogsRowType = Array<DialogItemType>
