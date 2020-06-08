@@ -1,0 +1,1 @@
+{"version":3,"sources":["FormControl.module.css","LoginForm.module.css"],"names":[],"mappings":"AAAA,iIAEI,oBACJ,CCHA,oEACI,SACJ","file":"6.c5b1a690.chunk.css","sourcesContent":[".formControl.error input,\n.formControl.error textarea {\n    border: 2px solid #f00;\n}\n\n.formControl span {\n    color: #f00;\n}",".errorMessage {\n    color: #f00;\n}"]}
